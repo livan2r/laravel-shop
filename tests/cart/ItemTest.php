@@ -56,9 +56,9 @@ class ItemTest extends TestCase
 			'description'		=> str_random(500),
 		]);
 
-		$user = factory('App\User')->create();
+		$user = factory('App\Models\User')->create();
 
-		$cart = App\Cart::findByUser($user->id)
+		$cart = App\Models\Cart::findByUser($user->id)
 			->add($product)
 			->add(['sku' => 'TEST0001', 'price' => 1.99]);
 
@@ -94,7 +94,7 @@ class ItemTest extends TestCase
 	 */
 	public function testPurchasedItemAttribute()
 	{
-		$user = factory('App\User')->create(['password' => Hash::make('laravel-shop')]);
+		$user = factory('App\Models\User')->create(['password' => Hash::make('laravel-shop')]);
 
 		Auth::attempt(['email' => $user->email, 'password' => 'laravel-shop']);
 
@@ -105,7 +105,7 @@ class ItemTest extends TestCase
 			'description'		=> str_random(500),
 		]);
 
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add($product);
 
 		Shop::setGateway('testPass');

@@ -43,11 +43,11 @@ class PurchaseTest extends TestCase
 	{
 		// Prepare
 
-		$user = factory('App\User')->create(['password' => Hash::make('laravel-shop')]);
+		$user = factory('App\Models\User')->create(['password' => Hash::make('laravel-shop')]);
 
 		$bool = Auth::attempt(['email' => $user->email, 'password' => 'laravel-shop']);
 
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add(['sku' => '0001', 'price' => 1.99])
 			->add(['sku' => '0002', 'price' => 2.99]);
 
@@ -73,11 +73,11 @@ class PurchaseTest extends TestCase
 	{
 		// Prepare
 
-		$user = factory('App\User')->create(['password' => Hash::make('laravel-shop')]);
+		$user = factory('App\Models\User')->create(['password' => Hash::make('laravel-shop')]);
 
 		$bool = Auth::attempt(['email' => $user->email, 'password' => 'laravel-shop']);
 
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add(['sku' => '0001', 'price' => 1.99])
 			->add(['sku' => '0002', 'price' => 2.99]);
 
@@ -106,11 +106,11 @@ class PurchaseTest extends TestCase
 	{
 		// Prepare
 
-		$user = factory('App\User')->create(['password' => Hash::make('laravel-shop')]);
+		$user = factory('App\Models\User')->create(['password' => Hash::make('laravel-shop')]);
 
 		$bool = Auth::attempt(['email' => $user->email, 'password' => 'laravel-shop']);
 
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add(['sku' => '0001', 'price' => 1.99])
 			->add(['sku' => '0002', 'price' => 2.99]);
 

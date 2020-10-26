@@ -24,7 +24,7 @@ class CartTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->user = factory('App\User')->create(['password' => Hash::make('laravel-shop')]);
+		$this->user = factory('App\Models\User')->create(['password' => Hash::make('laravel-shop')]);
 
 		Auth::attempt(['email' => $this->user->email, 'password' => 'laravel-shop']);
 	}
@@ -34,9 +34,9 @@ class CartTest extends TestCase
 	 */
 	public function testCreationBasedOnUser()
 	{
-		$user = factory('App\User')->create();
+		$user = factory('App\Models\User')->create();
 
-		$cart = App\Cart::findByUser($user->id);
+		$cart = App\Models\Cart::findByUser($user->id);
 
 		$this->assertNotEmpty($cart);
 
@@ -48,17 +48,17 @@ class CartTest extends TestCase
 	 */
 	public function testMultipleCurrentCalls()
 	{
-		$cart = App\Cart::current();
+		$cart = App\Models\Cart::current();
 
 		$this->assertNotEmpty($cart);
 
-		$cart = App\Cart::findByUser($this->user->id);
+		$cart = App\Models\Cart::findByUser($this->user->id);
 
 		$this->assertNotEmpty($cart);
 
 		$this->assertEquals($cart->user->id, $this->user->id);
 
-		$cart = App\Cart::current();
+		$cart = App\Models\Cart::current();
 
 		$this->assertNotEmpty($cart);
 
@@ -70,7 +70,7 @@ class CartTest extends TestCase
 	 */
 	public function testCreationBasedOnNull()
 	{
-		$cart = App\Cart::findByUser(null);
+		$cart = App\Models\Cart::findByUser(null);
 
 		$this->assertNotEmpty($cart);
 	}
@@ -80,7 +80,7 @@ class CartTest extends TestCase
 	 */
 	public function testCreationBasedOnAuthUser()
 	{
-		$cart = App\Cart::current();
+		$cart = App\Models\Cart::current();
 
 		$this->assertNotEmpty($cart);
 	}
@@ -103,7 +103,7 @@ class CartTest extends TestCase
 			]);
 		}
 
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add($products[0])
 			->add($products[1], 2)
 			->add($products[2], 3);
@@ -143,7 +143,7 @@ class CartTest extends TestCase
 			'description'		=> str_random(500),
 		]);
 
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add($product)
 			->add(['sku' => 'TEST001', 'price' => 6.99]);
 
@@ -167,7 +167,7 @@ class CartTest extends TestCase
 	 */
 	public function testOrderPlacement()
 	{
-		$cart = App\Cart::current()
+		$cart = App\Models\Cart::current()
 			->add(['sku' => str_random(15), 'price' => 1.99])
 			->add(['sku' => str_random(15), 'price' => 1.99]);
 

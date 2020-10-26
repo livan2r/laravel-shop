@@ -960,7 +960,7 @@ An example of how to use an event in a handler:
 
 namespace App\Handlers\Events;
 
-use App\Order;
+use App\Models\Order;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

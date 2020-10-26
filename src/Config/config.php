@@ -30,7 +30,7 @@ return [
     | Update the model if it is in a different namespace.
     |
     */
-    'cart' => 'App\Cart',
+    'cart' => 'App\Models\Cart',
 
     /*
     |--------------------------------------------------------------------------
@@ -51,7 +51,7 @@ return [
     | Update the model if it is in a different namespace.
     |
     */
-    'order' => 'App\Order',
+    'order' => 'App\Models\Order',
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +82,7 @@ return [
     | Update the model if it is in a different namespace.
     |
     */
-    'item' => 'App\Item',
+    'item' => 'App\Models\Item',
 
     /*
     |--------------------------------------------------------------------------
@@ -103,7 +103,7 @@ return [
     | Update the model if it is in a different namespace.
     |
     */
-    'transaction' => 'App\Transaction',
+    'transaction' => 'App\Models\Transaction',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +124,7 @@ return [
     | Update the model if it is in a different namespace.
     |
     */
-    'coupon' => 'App\Coupon',
+    'coupon' => 'App\Models\Coupon',
 
     /*
     |--------------------------------------------------------------------------

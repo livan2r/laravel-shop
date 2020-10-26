@@ -32,7 +32,7 @@ class CallbackTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->user = factory('App\User')->create(['password' => Hash::make('laravel-shop')]);
+		$this->user = factory('App\Models\User')->create(['password' => Hash::make('laravel-shop')]);
 
 		Auth::attempt(['email' => $this->user->email, 'password' => 'laravel-shop']);
 
@@ -43,7 +43,7 @@ class CallbackTest extends TestCase
 			'description'		=> str_random(500),
 		]);
 
-		$this->cart = App\Cart::current()->add($this->product);
+		$this->cart = App\Models\Cart::current()->add($this->product);
 	}
 
 	/**
