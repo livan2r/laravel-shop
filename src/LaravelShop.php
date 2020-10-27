@@ -107,7 +107,7 @@ class LaravelShop
      */
     public static function getGateway()
     {
-        $gateways = Session::get('shop.gateway');
+        $gateways = session('shop.gateway');
         return $gateways && count($gateways) > 0
             ? $gateways[count($gateways) - 1]
             : null;
@@ -255,7 +255,7 @@ class LaravelShop
             $order->save();
         }
         static::checkStatusChange($order, $statusCode);
-    } 
+    }
 
     /**
      * Formats any value to price format set in config.
@@ -287,7 +287,7 @@ class LaravelShop
      * @return object
      */
     public static function gateway()
-    {   
+    {
         return static::$gateway;
     }
 
@@ -314,7 +314,7 @@ class LaravelShop
 
     /**
      * Retunes gateway object.
-     * @return object 
+     * @return object
      */
     protected static function instanceGateway()
     {
@@ -327,7 +327,7 @@ class LaravelShop
      * Check on order status differences and fires event.
      * @param object $order Order.
      * @param string $prevStatusCode Previous status code.
-     * @return void 
+     * @return void
      */
     protected static function checkStatusChange($order, $prevStatusCode)
     {
