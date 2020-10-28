@@ -99,7 +99,7 @@ class LaravelShop
             throw new ShopException('Invalid gateway.');
         static::$gatewayKey = $gatewayKey;
         static::$gateway    = static::instanceGateway();
-        Session::push('shop.gateway', $gatewayKey);
+        session('shop.gateway', $gatewayKey);
     }
 
     /**
